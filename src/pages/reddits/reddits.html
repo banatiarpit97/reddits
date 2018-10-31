@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>Reddits</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+<ion-list>
+  <ion-item>
+    <ion-label>Category</ion-label>
+    <ion-select [(ngModel)]='category' (ionChange)='changeCategory()' class="select">
+      <ion-option value='funny'>Funny</ion-option>
+      <ion-option value='sports'>Sports</ion-option>
+      <ion-option value='food'>Food</ion-option>
+      <ion-option value='music'>Music</ion-option>
+      <ion-option value='news'>News</ion-option>
+      <ion-option value='gaming'>Gaming</ion-option>
+      <ion-option value='art'>Art</ion-option>
+      <ion-option value='technology'>Technology</ion-option>
+      <ion-option value='relationships'>Relationships</ion-option>
+      <ion-option value='WTF'>WTF</ion-option>
+      <ion-option value='aww'>Cute Pictures</ion-option>
+      <ion-option value='Showerthoughts'>Shower Thoughts</ion-option>
+      <ion-option value='me_irl'>Selfies of the soul</ion-option>
+      <ion-option value='nfl'>NFL</ion-option>
+      <ion-option value='politics'>Politics</ion-option>
+      <ion-option value='worldnews'>World News</ion-option>
+      <ion-option value='The_Donald'>America</ion-option>
+      <ion-option value='AskReddit'>Ask Reddit</ion-option>
+      <ion-option value='nba'>NBA</ion-option>
+      <ion-option value='videos'>Videos</ion-option>
+      <ion-option value='todayilearned'>Today i learned</ion-option>
+      <ion-option value='soccer'>Soccer</ion-option>
+      <ion-option value='gifs'>GIFS</ion-option>
+      
+      
+      
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+  <ion-list>
+  <ion-item *ngFor='let post of getReddits.items let i =index' (click)='postDetail(post)'>
+    <ion-avatar item-start *ngIf='post.data.thumbnail'>
+      <img src={{post.data.thumbnail}}>
+    </ion-avatar>
+    <h2 class="title" *ngIf='post.data.title'>{{post.data.title}}</h2>
+    <!-- <p>{{post.data.post_hint}}</p> -->
+    <ion-icon name='thumbs-up' *ngIf='post.data.score'></ion-icon><span class="likes" *ngIf='post.data.score'>{{post.data.score}}</span>
+    <ion-icon name='chatboxes' *ngIf='post.data.num_comments'></ion-icon><span class="comments" *ngIf='post.data.num_comments'>{{post.data.num_comments}}</span>
+  </ion-item>
+</ion-list>
+
+<p *ngIf='this.getReddits.end' class="end">No more items to show</p>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content
+     loadingText="Loading more reddits...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>

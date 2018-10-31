@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label >Category</ion-label>
+      <ion-select [(ngModel)] = 'category'>
+        <ion-option value='funny'>Funny</ion-option>
+        <ion-option value='sports'>Sports</ion-option>
+        <ion-option value='food'>Food</ion-option>
+        <ion-option value='music'>Music</ion-option>
+        <ion-option value='news'>News</ion-option>
+        <ion-option value='gaming'>Gaming</ion-option>
+        <ion-option value='art'>Art</ion-option>  
+        <ion-option value='technology'>Technology</ion-option>
+        <ion-option value='relationships'>Relationships</ion-option>
+        <ion-option value='WTF'>WTF</ion-option>
+        <ion-option value='aww'>Cute Pictures</ion-option>
+        <ion-option value='Showerthoughts'>Shower Thoughts</ion-option>
+        <ion-option value='me_irl'>Selfies of the soul</ion-option>
+        <ion-option value='nfl'>NFL</ion-option>
+        <ion-option value='politics'>Politics</ion-option>
+        <ion-option value='worldnews'>World News</ion-option>
+        <ion-option value='The_Donald'>America</ion-option>
+        <ion-option value='AskReddit'>Ask Reddit</ion-option>
+        <ion-option value='nba'>NBA</ion-option>
+        <ion-option value='videos'>Videos</ion-option>
+        <ion-option value='todayilearned'>Today i learned</ion-option>
+        <ion-option value='soccer'>Soccer</ion-option>
+        <ion-option value='gifs'>GIFS</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button block (click)='changeDefaults()'>Change Defaults</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

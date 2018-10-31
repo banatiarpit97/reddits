@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{post.data.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-card>
+      <img src={{post.data.url}} *ngIf="post.data.post_hint=='image'">
+      <!-- <img src={{post.data.thumbnail}} *ngIf="post.data.post_hint!='image'">      -->
+      <ng-container *ngIf="post.data.post_hint=='hosted:video'">
+      <video  *ngIf="post.data.media.reddit_video" controls width="100%" height="100%">
+        <source src={{post.data.media.reddit_video.fallback_url}} *ngIf='post.data.media.reddit_video.fallback_url'>
+      </video>
+      <img src={{post.data.thumbnail}} *ngIf="!post.data.media.reddit_video">
+      </ng-container>
+
+      <ng-container *ngIf="post.data.post_hint=='link'">
+      <!-- <ng-container *ngIf="post.data.preview.reddit_video_preview.fallback_url != ''"> -->
+        <video *ngIf="post.data.preview.reddit_video_preview" controls width="100%" height="100%">
+          <source src={{post.data.preview.reddit_video_preview.fallback_url}} *ngIf='post.data.preview.reddit_video_preview.fallback_url'>
+        </video>
+      <img src={{post.data.thumbnail}} *ngIf="!post.data.preview.reddit_video_preview">
+        
+      <!-- </ng-container>   -->
+      </ng-container>
+     
+      <ng-container *ngIf="post.data.post_hint=='rich:video'">
+      <video *ngIf="post.data.preview.reddit_video_preview" controls width="100%" height="100%">
+          <source src={{post.data.preview.reddit_video_preview.fallback_url}} *ngIf='post.data.preview.reddit_video_preview.fallback_url'>
+      </video>
+      <img src={{post.data.thumbnail}} *ngIf="!post.data.preview.reddit_video_preview">     
+      </ng-container>  
+    <h1 class="title">{{post.data.title}}</h1>
+    <ion-list>
+      <ion-item>
+        <ion-icon name='person'></ion-icon>
+        <span class="comments">{{post.data.author}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='thumbs-up'></ion-icon>
+        <span class="likes">{{post.data.score}}</span>
+      </ion-item>
+      <ion-item>
+        <ion-icon name='chatboxes'></ion-icon>
+        <span class="comments">{{post.data.num_comments}}</span>
+      </ion-item>
+      <ion-item>
+        <button ion-button block (click)='openReddit(post.data.permalink)'>View on Reddit</button>
+      </ion-item>
+  </ion-list>
+ </ion-card> 
+</ion-content>

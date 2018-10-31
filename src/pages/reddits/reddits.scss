@@ -1,0 +1,26 @@
+page-reddits {
+  ion-icon{
+    font-size: 1.6em;
+    margin-top: 3%;
+    margin-right: 4px;
+    color: grey;
+  }
+  .likes{
+      margin-right: 5%;
+  }
+  .title{
+    font-size: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .likes, .comments{
+      font-size: 14px;
+  }
+  .end{
+    text-align: center;
+  }
+  .select{
+    transform: translateX(-25px);
+  }
+}
